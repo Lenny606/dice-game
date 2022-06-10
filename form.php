@@ -1,7 +1,22 @@
 <?php
 require_once 'Dice.php';
 
-$num = $_POST["number"]; 
+$num = $_POST["number"] ?? null; 
+
+$valid = true;
+if(empty($num)) {
+    $valid = false;
+    echo "choose a num pls";
+    
+}
+
+if (!empty($num) && !is_numeric($num)){
+    $valid = false;
+   
+    echo "no letters pls-->";
+    echo "<a href='form.php'>Go back</a>";
+    exit();
+}
 
 
 function rollDices ($num) {
